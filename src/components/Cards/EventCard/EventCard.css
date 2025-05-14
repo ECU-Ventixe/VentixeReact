@@ -1,0 +1,39 @@
+.event-card {
+  width: 275px;
+  height: 350px;
+  background-color: var(--gray-10);
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.event-image {
+  max-width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background-color: var(--gray-40);
+}
+.event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.event-info h3 {
+  font-size: 16px;
+  font-weight: var(--font-semibold);
+  color: var(--gray-100);
+}
+.event-time {
+  font-size: 11px;
+  color: var(--gray-70);
+  font-weight: var(--font-normal);
+}
+.event-location {
+  font-size: 11px;
+  color: var(--gray-80);
+  font-weight: var(--font-normal);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

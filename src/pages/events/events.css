@@ -1,0 +1,56 @@
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+}
+.events-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.events-status span {
+  font-size: 12px;
+  color: var(--gray-90);
+  height: 36px;
+  width: 102px;
+  background-color: var(--gray-10);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+.events-status span:hover {
+  background-color: var(--primary-100);
+  color: var(--gray-10);
+  transition: all 0.3s ease;
+}
+.events-status span.active {
+  background-color: var(--primary-100);
+  color: var(--gray-10);
+}
+.add-event-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  gap: 10px;
+  background-color: var(--primary-100);
+  color: var(--gray-10);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+.event-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 1rem;
+}
