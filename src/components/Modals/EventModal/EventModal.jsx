@@ -6,23 +6,29 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventStartDate, setEventStartDate] = useState("");
-  const [eventStartTime, setEventStartTime] = useState("");
+  const [eventEndDate, setEventEndDate] = useState("");
+  const [ticketStartDate, setTicketStartDate] = useState("");
   const [eventLocation, setEventLocation] = useState("");
+  const [eventCity, setEventCity] = useState("");
+  const [eventState, setEventState] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newEvent = {
-      name: eventName,
-      description: eventDescription,
-      startdate: eventStartDate,
-      starttime: eventStartTime,
+      eventName: eventName,
+      eventDescription: eventDescription,
+      eventStartDate: eventStartDate,
+      eventEndDate: eventEndDate,
+      ticketStartDate: ticketStartDate,
       location: eventLocation,
+      city: eventCity,
+      state: eventState,
     };
     console.log(newEvent);
     try {
-      const respone = await fetch("https://localhost:7122/api/event", {
+      const respone = await fetch("https://localhost:7004/api/event", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,11 +36,15 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
         body: JSON.stringify(newEvent),
       });
       if (respone.ok) {
+        const data = await respone.json();
         setEventName("");
         setEventDescription("");
         setEventStartDate("");
-        setEventStartTime("");
+        setEventEndDate("");
+        setTicketStartDate("");
         setEventLocation("");
+        setEventCity("");
+        setEventState("");
         onClose();
         onEventAdded();
       } else {
@@ -76,7 +86,7 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
             <div className="event-form-group">
               <label htmlFor="event-date">Event Date</label>
               <input
-                type="date"
+                type="datetime-local"
                 id="event-date"
                 value={eventStartDate}
                 onChange={(e) => setEventStartDate(e.target.value)}
@@ -85,10 +95,10 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
             <div className="event-form-group">
               <label htmlFor="event-time">Event Time</label>
               <input
-                type="time"
+                type="datetime-local"
                 id="event-time"
-                value={eventStartTime}
-                onChange={(e) => setEventStartTime(e.target.value)}
+                value={eventEndDate}
+                onChange={(e) => setEventEndDate(e.target.value)}
               />
             </div>
             <div className="event-form-group">
@@ -98,6 +108,33 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
                 id="event-location"
                 value={eventLocation}
                 onChange={(e) => setEventLocation(e.target.value)}
+              />
+            </div>
+            <div className="event-form-group">
+              <label htmlFor="event-city">Event City</label>
+              <input
+                type="text"
+                id="event-city"
+                value={eventCity}
+                onChange={(e) => setEventCity(e.target.value)}
+              />
+            </div>
+            <div className="event-form-group">
+              <label htmlFor="event-state">Event State</label>
+              <input
+                type="text"
+                id="event-state"
+                value={eventState}
+                onChange={(e) => setEventState(e.target.value)}
+              />
+            </div>
+            <div className="event-form-group">
+              <label htmlFor="ticket-start-date">Ticket Start Date</label>
+              <input
+                type="datetime-local"
+                id="ticket-start-date"
+                value={ticketStartDate}
+                onChange={(e) => setTicketStartDate(e.target.value)}
               />
             </div>
             <button type="submit" className="event-form-submit">

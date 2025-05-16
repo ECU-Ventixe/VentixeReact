@@ -6,10 +6,8 @@ function EventCard({ event }) {
     <div className="event-card">
       <div className="event-image"></div>
       <div className="event-info">
-        <span className="event-time">
-          {event.startDate} - {event.startTime}
-        </span>
-        <h3>{event.name}</h3>
+        <span className="event-time">{event.eventStartDate}</span>
+        <h3>{event.eventName}</h3>
         <div className="event-location">
           <i className="fa-thin fa-location-dot"></i>
           <span>{event.location}</span>

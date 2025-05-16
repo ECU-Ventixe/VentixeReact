@@ -2,8 +2,11 @@ import React from "react";
 import "./SideBar.css";
 import VentixLogo from "../../assets/Symbol.svg";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext.jsx";
 
 function SideBar() {
+  const { isAuthenticated, logout, login } = useContext(AuthContext);
   return (
     <div className="sidebar">
       <div className="sidebar-content">
@@ -25,6 +28,20 @@ function SideBar() {
             </NavLink>
           </li>
         </ul>
+        <div className="signout">
+          {isAuthenticated && (
+            <button className="signout-btn" onClick={logout}>
+              <i className="fa-light fa-right-from-bracket"></i>
+              <span>Sign Out</span>
+            </button>
+          )}
+          {!isAuthenticated && (
+            <NavLink to="/signin" className="nav-link">
+              <i className="fa-light fa-right-from-bracket"></i>
+              <span>Sign In</span>
+            </NavLink>
+          )}
+        </div>
       </div>
     </div>
   );

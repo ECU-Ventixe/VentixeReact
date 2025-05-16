@@ -10,9 +10,9 @@ function events() {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("https://localhost:7122/api/event");
+      const response = await fetch("https://localhost:7004/api/event");
       const data = await response.json();
-      setEvents(data.events);
+      setEvents(data);
     } catch (error) {
       console.error("Error fetching events:", error);
     }
