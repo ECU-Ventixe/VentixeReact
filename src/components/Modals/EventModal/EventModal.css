@@ -1,0 +1,70 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.event-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--gray-10);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 500px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+.event-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.event-modal-header h2 {
+  font-size: 24px;
+  font-weight: var(--font-semibold);
+  color: var(--secondary-100);
+}
+.event-modal-close {
+  font-size: 24px;
+  color: var(--gray-100);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.event-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.event-form-group label {
+  font-size: 16px;
+  color: var(--gray-100);
+}
+.event-form-group input {
+  padding: 0.5rem;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+  font-size: 16px;
+}
+.event-form-group input:focus {
+  border-color: var(--primary-100);
+  outline: none;
+}
+.event-form-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-100);
+  color: var(--gray-10);
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
