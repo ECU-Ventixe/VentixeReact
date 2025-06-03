@@ -24,7 +24,7 @@ function EventCard({ event }) {
     const boughtTickets = async () => {
       try {
         const response = await fetch(
-          `https://localhost:7047/api/ticket/bought/${event.id}`
+          `https://ventixe-ticket-ecu-bpbqcchqddg6ath9.swedencentral-01.azurewebsites.net/api/ticket/bought/${event.id}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

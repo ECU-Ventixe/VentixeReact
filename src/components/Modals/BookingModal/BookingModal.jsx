@@ -28,7 +28,7 @@ function BookingModal({ openBooking, onClose, event }) {
       const id = getUserId();
       try {
         const response = await fetch(
-          `https://localhost:7080/api/account/getuser/${id}`
+          `https://ventixe-account-ecu-c5frc3h3c8hcfmav.swedencentral-01.azurewebsites.net/api/account/getuser/${id}`
         );
         if (!response.ok) {
           const text = await response.text();
@@ -47,7 +47,7 @@ function BookingModal({ openBooking, onClose, event }) {
 
   const postBooking = async () => {
     try {
-      const response = await fetch(`https://localhost:7177/api/booking`, {
+      const response = await fetch(`https://ventixe-booking-ecu-bparahc2haebbfbz.swedencentral-01.azurewebsites.net/api/booking`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -14,7 +14,7 @@ function Bookings() {
     const initGet = async () => {
       try {
         const bookingResponse = await fetch(
-          `https://localhost:7047/api/ticket/getticket/${userId}`
+          `https://ventixe-ticket-ecu-bpbqcchqddg6ath9.swedencentral-01.azurewebsites.net/api/ticket/getticket/${userId}`
         );
         const bookings = await bookingResponse.json();
         const normalized = Array.isArray(bookings) ? bookings : [bookings];
@@ -23,7 +23,7 @@ function Bookings() {
         const events = await Promise.all(
           normalized.map(async (bookings) => {
             const eventResponse = await fetch(
-              `https://localhost:7121/api/event/getevent/${bookings.eventId}`
+              `https://ventixe-event-ecu-dvddbqcpewahfdcz.swedencentral-01.azurewebsites.net/api/event/getevent/${bookings.eventId}`
             );
             if (eventResponse.ok) {
               return await eventResponse.json();
