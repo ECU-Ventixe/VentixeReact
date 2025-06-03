@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import EventModal from "../../components/Modals/EventModal/EventModal";
 import EventCard from "../../components/Cards/EventCard/EventCard";
 
-function events() {
+function Events() {
   const [isOpen, setIsOpen] = useState(false);
   const [events, setEvents] = useState([]);
 
@@ -53,4 +53,4 @@ function events() {
     </div>
   );
 }
-export default events;
+export default Events;

@@ -1,0 +1,62 @@
+.booking-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.booking-modal.open {
+  display: flex;
+}
+
+.booking-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.booking-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--gray-100);
+}
+.modal-content {
+  background: var(--gray-10);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1001;
+}
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.booking-input {
+  padding: 10px;
+  border: 1px solid var(--gray-30);
+  border-radius: 5px;
+  font-size: 16px;
+}
+.booking-input:focus {
+  border-color: var(--primary-100);
+  outline: none;
+}
+.booking-submit {
+  background-color: var(--primary-100);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

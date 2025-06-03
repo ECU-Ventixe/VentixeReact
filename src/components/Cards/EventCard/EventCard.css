@@ -7,6 +7,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  cursor: pointer;
+}
+.event-card:hover {
+  box-shadow: 0px 0px 7px 5px var(--primary-50);
 }
 .event-image {
   max-width: 100%;
@@ -36,4 +40,34 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.event-tickets {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.25rem;
+}
+.tickets-left-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tickets-left {
+  display: flex;
+  width: 150px;
+  height: 0.8rem;
+  background-color: var(--primary-50);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.tickets-bought {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: var(--primary-100);
+}
+.event-price {
+  justify-self: end;
 }

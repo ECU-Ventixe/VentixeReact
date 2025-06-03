@@ -5,6 +5,7 @@ import Events from "./pages/events/events";
 import Layout from "./Layout";
 import SignIn from "./pages/Auth/SignIn/SignIn";
 import Register from "./pages/Auth/Register/Register";
+import Bookings from "./pages/Bookings/Bookings";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/bookings" element={<Bookings />} />
           </Route>
         </Routes>
       </BrowserRouter>

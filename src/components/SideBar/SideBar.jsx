@@ -27,6 +27,12 @@ function SideBar() {
               <span>Events</span>
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/bookings" className="nav-link">
+              <i className="fa-light fa-calendar-check"></i>
+              <span>Bookings</span>
+            </NavLink>
+          </li>
         </ul>
         <div className="signout">
           {isAuthenticated && (

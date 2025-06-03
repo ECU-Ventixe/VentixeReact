@@ -16,12 +16,31 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
   };
 
+  const getUserId = () => {
+    const payload = token.split(".")[1];
+    const decoded = JSON.parse(atob(payload));
+    return decoded.sub;
+  };
+  const getUserEmail = () => {
+    const payload = token.split(".")[1];
+    const decoded = JSON.parse(atob(payload));
+    return decoded.email;
+  };
+
   const isAuthenticated = !!token;
   const notAuthenticated = !isAuthenticated;
 
   return (
     <AuthContext.Provider
-      value={{ token, login, logout, isAuthenticated, notAuthenticated }}>
+      value={{
+        token,
+        login,
+        logout,
+        isAuthenticated,
+        notAuthenticated,
+        getUserId,
+        getUserEmail,
+      }}>
       {children}
     </AuthContext.Provider>
   );

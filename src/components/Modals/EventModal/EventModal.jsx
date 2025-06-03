@@ -11,6 +11,8 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
   const [eventLocation, setEventLocation] = useState("");
   const [eventCity, setEventCity] = useState("");
   const [eventState, setEventState] = useState("");
+  const [ticketPrice, setTicketPrice] = useState("");
+  const [ticketQuantity, setTicketQuantity] = useState("");
 
   if (!isOpen) return null;
 
@@ -25,6 +27,8 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
       location: eventLocation,
       city: eventCity,
       state: eventState,
+      price: ticketPrice,
+      ticketAmount: ticketQuantity,
     };
     console.log(newEvent);
     try {
@@ -45,6 +49,8 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
         setEventLocation("");
         setEventCity("");
         setEventState("");
+        setTicketPrice("");
+        setTicketQuantity("");
         onClose();
         onEventAdded();
       } else {
@@ -135,6 +141,24 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
                 id="ticket-start-date"
                 value={ticketStartDate}
                 onChange={(e) => setTicketStartDate(e.target.value)}
+              />
+            </div>
+            <div className="event-form-group">
+              <label htmlFor="ticket-price">Ticket Price</label>
+              <input
+                type="number"
+                id="ticket-price"
+                value={ticketPrice}
+                onChange={(e) => setTicketPrice(e.target.value)}
+              />
+            </div>
+            <div className="event-form-group">
+              <label htmlFor="ticket-quantity">Ticket Quantity</label>
+              <input
+                type="number"
+                id="ticket-quantity"
+                value={ticketQuantity}
+                onChange={(e) => setTicketQuantity(e.target.value)}
               />
             </div>
             <button type="submit" className="event-form-submit">
