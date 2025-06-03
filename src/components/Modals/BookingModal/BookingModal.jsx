@@ -13,7 +13,7 @@ function BookingModal({ openBooking, onClose, event }) {
   const [quantity, setQuantity] = useState(1);
   const [formData, setFormData] = useState({
     eventId: event.id,
-    userId: "",
+    userId: getUserId(),
     firstName: "",
     lastName: "",
     email: "",
@@ -23,37 +23,18 @@ function BookingModal({ openBooking, onClose, event }) {
     ticketQuantity: 1,
   });
 
-  useEffect(() => {
-    const initUser = async () => {
-      const id = getUserId();
-      try {
-        const response = await fetch(
-          `https://ventixe-account-ecu-c5frc3h3c8hcfmav.swedencentral-01.azurewebsites.net/api/account/getuser/${id}`
-        );
-        if (!response.ok) {
-          const text = await response.text();
-          throw new Error(`HTTP ${response.status}: ${text}`);
-        } else {
-          setFormData((prev) => ({ ...prev, userId: id }));
-        }
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      }
-    };
-    if (openBooking) {
-      initUser();
-    }
-  }, [openBooking]);
-
   const postBooking = async () => {
     try {
-      const response = await fetch(`https://ventixe-booking-ecu-bparahc2haebbfbz.swedencentral-01.azurewebsites.net/api/booking`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://ventixe-booking-ecu-bparahc2haebbfbz.swedencentral-01.azurewebsites.net/api/booking`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
     } catch (error) {
       console.error("Error posting booking:", error);
     }
