@@ -21,13 +21,16 @@ function Register() {
       password: registerPassword,
     };
     console.log(newUser);
-    const res = await fetch("https://localhost:7080/api/account/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
+    const res = await fetch(
+      "https://ventixe-account-ecu-c5frc3h3c8hcfmav.swedencentral-01.azurewebsites.net/api/account/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }
+    );
     if (res.ok) {
       setRegisterEmail("");
       setRegisterPassword("");

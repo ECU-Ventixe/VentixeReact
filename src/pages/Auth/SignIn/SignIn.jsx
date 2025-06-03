@@ -18,7 +18,7 @@ function SignIn() {
       password: password,
     };
     console.log(user);
-    const res = await fetch("https://localhost:7080/api/account/signin", {
+    const res = await fetch("https://ventixe-account-ecu-c5frc3h3c8hcfmav.swedencentral-01.azurewebsites.net/api/account/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
