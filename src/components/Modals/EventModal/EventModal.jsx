@@ -32,15 +32,18 @@ function EventModal({ isOpen, onClose, onEventAdded }) {
     };
     console.log(newEvent);
     try {
-      const respone = await fetch("https://localhost:7121/api/event", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newEvent),
-      });
-      if (respone.ok) {
-        const data = await respone.json();
+      const response = await fetch(
+        "https://ventixe-event-ecu-dvddbqcpewahfdcz.swedencentral-01.azurewebsites.net/api/event",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newEvent),
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
         setEventName("");
         setEventDescription("");
         setEventStartDate("");

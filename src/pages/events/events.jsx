@@ -10,7 +10,9 @@ function Events() {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch("https://localhost:7121/api/event");
+      const response = await fetch(
+        "https://ventixe-event-ecu-dvddbqcpewahfdcz.swedencentral-01.azurewebsites.net/api/event"
+      );
       const data = await response.json();
       setEvents(data);
     } catch (error) {
