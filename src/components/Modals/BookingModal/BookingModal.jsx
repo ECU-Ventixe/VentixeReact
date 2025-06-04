@@ -4,6 +4,11 @@ import { AuthContext } from "../../../Context/AuthContext";
 
 function BookingModal({ openBooking, onClose, event }) {
   const { getUserId } = useContext(AuthContext);
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+    success: true,
+  });
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,9 +40,32 @@ function BookingModal({ openBooking, onClose, event }) {
           body: JSON.stringify(formData),
         }
       );
+      if (response.ok) {
+        setToast({
+          show: true,
+          message: "Booking successful!",
+          success: true,
+        });
+      } else {
+        const errorData = await response.json();
+        setToast({
+          show: true,
+          message: errorData.message || "Booking failed. Please try again.",
+          success: false,
+        });
+      }
     } catch (error) {
       console.error("Error posting booking:", error);
+
+      setToast({
+        show: true,
+        message: "An error occurred. Please try again.",
+        success: false,
+      });
     }
+    setTimeout(() => {
+      setToast({ show: false, message: "", success: true });
+    }, 3000);
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,108 +84,118 @@ function BookingModal({ openBooking, onClose, event }) {
   };
 
   return (
-    <div className={`booking-modal ${openBooking ? "open" : ""}`}>
-      <div className="modal-content">
-        <div className="booking-modal-header">
-          <h2>Book Event: {event.eventName}</h2>
-          <button className="booking-close" onClick={handleClose}>
-            <i className="fa-solid fa-xmark"></i>
-          </button>
+    <>
+      <div className={`booking-modal ${openBooking ? "open" : ""}`}>
+        <div className="modal-content">
+          <div className="booking-modal-header">
+            <h2>Book Event: {event.eventName}</h2>
+            <button className="booking-close" onClick={handleClose}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <form className="booking-form" onSubmit={handleSubmit}>
+            <div className="booking-form-group">
+              <label htmlFor="firstName">First Name:</label>
+              <input
+                type="text"
+                name="firstName"
+                className="booking-input"
+                value={firstName}
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                  handleInputChange(e);
+                }}
+              />
+            </div>
+            <div className="booking-form-group">
+              <label htmlFor="lastName">Last Name:</label>
+              <input
+                type="text"
+                name="lastName"
+                className="booking-input"
+                value={lastName}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                  handleInputChange(e);
+                }}
+              />
+            </div>
+            <div className="booking-form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                className="booking-input"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  handleInputChange(e);
+                }}
+              />
+            </div>
+            <div className="booking-form-group">
+              <label htmlFor="phoneNumber">Phone Number:</label>
+              <input
+                type="tel"
+                name="phoneNumber"
+                className="booking-input"
+                value={phoneNumber}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                  handleInputChange(e);
+                }}
+              />
+            </div>
+            <div className="booking-form-group">
+              <label htmlFor="postalCode">Postal Code:</label>
+              <input
+                type="text"
+                name="postalCode"
+                className="booking-input"
+                value={postalCode}
+                onChange={(e) => {
+                  setPostalCode(e.target.value);
+                  handleInputChange(e);
+                }}
+              />
+            </div>
+            <div className="booking-form-group">
+              <label htmlFor="address">Address:</label>
+              <input
+                type="text"
+                name="address"
+                className="booking-input"
+                value={address}
+                onChange={(e) => {
+                  setAddress(e.target.value);
+                  handleInputChange(e);
+                }}
+              />
+            </div>
+            <label>Tickets:</label>
+            <input
+              type="number"
+              name="ticketQuantity"
+              className="booking-input"
+              min="1"
+              value={quantity}
+              onChange={handleInputChange}
+            />
+            <button className="booking-submit" type="submit">
+              Book Now
+            </button>
+          </form>
         </div>
-        <form className="booking-form" onSubmit={handleSubmit}>
-          <div className="booking-form-group">
-            <label htmlFor="firstName">First Name:</label>
-            <input
-              type="text"
-              name="firstName"
-              className="booking-input"
-              value={firstName}
-              onChange={(e) => {
-                setFirstName(e.target.value);
-                handleInputChange(e);
-              }}
-            />
-          </div>
-          <div className="booking-form-group">
-            <label htmlFor="lastName">Last Name:</label>
-            <input
-              type="text"
-              name="lastName"
-              className="booking-input"
-              value={lastName}
-              onChange={(e) => {
-                setLastName(e.target.value);
-                handleInputChange(e);
-              }}
-            />
-          </div>
-          <div className="booking-form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              name="email"
-              className="booking-input"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                handleInputChange(e);
-              }}
-            />
-          </div>
-          <div className="booking-form-group">
-            <label htmlFor="phoneNumber">Phone Number:</label>
-            <input
-              type="tel"
-              name="phoneNumber"
-              className="booking-input"
-              value={phoneNumber}
-              onChange={(e) => {
-                setPhoneNumber(e.target.value);
-                handleInputChange(e);
-              }}
-            />
-          </div>
-          <div className="booking-form-group">
-            <label htmlFor="postalCode">Postal Code:</label>
-            <input
-              type="text"
-              name="postalCode"
-              className="booking-input"
-              value={postalCode}
-              onChange={(e) => {
-                setPostalCode(e.target.value);
-                handleInputChange(e);
-              }}
-            />
-          </div>
-          <div className="booking-form-group">
-            <label htmlFor="address">Address:</label>
-            <input
-              type="text"
-              name="address"
-              className="booking-input"
-              value={address}
-              onChange={(e) => {
-                setAddress(e.target.value);
-                handleInputChange(e);
-              }}
-            />
-          </div>
-          <label>Tickets:</label>
-          <input
-            type="number"
-            name="ticketQuantity"
-            className="booking-input"
-            min="1"
-            value={quantity}
-            onChange={handleInputChange}
-          />
-          <button className="booking-submit" type="submit">
-            Book Now
-          </button>
-        </form>
       </div>
-    </div>
+      {toast.show && (
+        <div
+          className={`toast ${
+            toast.success ? "toast-success" : "toast-error"
+          }`}>
+          {toast.message}
+        </div>
+      )}
+    </>
   );
 }
 export default BookingModal;
