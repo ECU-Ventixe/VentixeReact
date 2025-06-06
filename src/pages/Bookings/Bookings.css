@@ -1,6 +1,11 @@
+.bookings h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
 .booking-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-top: 1rem;
 }
-

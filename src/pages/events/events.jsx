@@ -27,9 +27,9 @@ function Events() {
     <div className="events">
       <div className="events-header">
         <div className="events-status">
-          <span>Active (44)</span>
-          <span>Draft (22)</span>
-          <span>Past (33)</span>
+          <span>Active (0)</span>
+          <span>Draft (0)</span>
+          <span>Past (0)</span>
         </div>
         <div className="events-add">
           <button

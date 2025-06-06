@@ -69,5 +69,5 @@
   background-color: var(--primary-100);
 }
 .event-price {
-  justify-self: end;
+  color: var(--primary-100);
 }

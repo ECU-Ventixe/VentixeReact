@@ -12,28 +12,54 @@ function SideBar() {
       <div className="sidebar-content">
         <div className="sidebar-header">
           <img src={VentixLogo} alt="Ventix Logo" />
-          <h2>Ventixe</h2>
+          <NavLink to="/">
+            <h2>Ventixe</h2>
+          </NavLink>
         </div>
-        <ul className="sidebar-menu">
-          <li>
-            <NavLink to="/" className="nav-link">
+        {isAuthenticated && (
+          <ul className="sidebar-menu">
+            <li>
+              <NavLink to="/dashboard" className="nav-link">
+                <i className="fa-light fa-grid-2"></i>
+                <span>Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/events" className="nav-link">
+                <i className="fa-light fa-square-check"></i>
+                <span>Events</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/bookings" className="nav-link">
+                <i className="fa-light fa-calendar-check"></i>
+                <span>Bookings</span>
+              </NavLink>
+            </li>
+          </ul>
+        )}
+        {!isAuthenticated && (
+          <ul className="sidebar-menu">
+            <li className="nav-link not-authenticated">
               <i className="fa-light fa-grid-2"></i>
               <span>Dashboard</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/events" className="nav-link">
+              <i className="fa-regular fa-lock"></i>
+              <span className="lock-message">Log in to access</span>
+            </li>
+            <li className="nav-link not-authenticated">
               <i className="fa-light fa-square-check"></i>
               <span>Events</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/bookings" className="nav-link">
+              <i className="fa-regular fa-lock"></i>
+              <span className="lock-message">Log in to access</span>
+            </li>
+            <li className="nav-link not-authenticated">
               <i className="fa-light fa-calendar-check"></i>
               <span>Bookings</span>
-            </NavLink>
-          </li>
-        </ul>
+              <i className="fa-regular fa-lock"></i>
+              <span className="lock-message">Log in to access</span>
+            </li>
+          </ul>
+        )}
         <div className="signout">
           {isAuthenticated && (
             <button className="signout-btn" onClick={logout}>

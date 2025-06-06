@@ -6,6 +6,7 @@ import Layout from "./Layout";
 import SignIn from "./pages/Auth/SignIn/SignIn";
 import Register from "./pages/Auth/Register/Register";
 import Bookings from "./pages/Bookings/Bookings";
+import Hero from "./pages/Hero/Hero";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard />} />
+            <Route index element={<Hero />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/events" element={<Events />} />
             <Route path="/bookings" element={<Bookings />} />
           </Route>

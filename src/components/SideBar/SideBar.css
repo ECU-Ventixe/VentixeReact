@@ -72,6 +72,22 @@
   gap: 1rem;
   font-size: 14px;
 }
+.not-authenticated {
+  position: relative;
+}
+.not-authenticated:hover .lock-message {
+  visibility: visible;
+}
+.lock-message {
+  visibility: hidden;
+  position: absolute;
+  top: 20px;
+  background-color: var(--gray-10);
+  width: 100px;
+  padding: 0.5rem;
+  z-index: 1000;
+  border-radius: 5px;
+}
 @media (max-width: 767px) {
   .sidebar {
     display: none;
