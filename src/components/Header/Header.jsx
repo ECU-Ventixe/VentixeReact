@@ -1,12 +1,31 @@
 import React from "react";
 import "./Header.css";
+import { AuthContext } from "../../Context/AuthContext";
+import { useContext } from "react";
+import { useLocation } from "react-router-dom";
 
 function Header() {
+  const { getUserEmail } = useContext(AuthContext);
+  const userEmail = getUserEmail();
+  const location = useLocation();
+
+  const getTitle = () => {
+    switch (location.pathname) {
+      case "/dashboard":
+        return "Dashboard";
+      case "/events":
+        return "Events";
+      case "/bookings":
+        return "Bookings";
+      default:
+        return "Ventixe";
+    }
+  };
   return (
     <header className="header">
       <div className="header-content">
         <div className="header-left">
-          <h1>Dashboard</h1>
+          <h1>{getTitle()}</h1>
           <span>Hello Orlando, Welcome back!</span>
         </div>
         <div className="header-right">
@@ -27,8 +46,8 @@ function Header() {
           <div className="header-user">
             <div className="user-avatar"></div>
             <div className="user-info">
-              <span className="username">Orlando Laurentius</span>
-              <span className="user-role">Admin</span>
+              <span className="username">{userEmail}</span>
+              <span className="user-role"></span>
             </div>
           </div>
         </div>

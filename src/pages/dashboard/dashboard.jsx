@@ -6,8 +6,7 @@ function dashboard() {
     <>
       <div className="dashboard">
         <div className="dashboard-header">
-          <h1>Dashboard</h1>
-          <span>Hello Orlando, Welcome back!</span>
+          <h1>Coming Soon</h1>
         </div>
       </div>
     </>
